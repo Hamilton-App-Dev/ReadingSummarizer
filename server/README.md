@@ -32,7 +32,13 @@ venv/bin/activate.bat
 pip install -r requirements.txt
 ```
 
-5. Start dev server
+5. Use environment variables
+
+```
+export OPENAI_API_KEY=""
+```
+
+6. Start dev server
 
 ```
 python3 run.py
