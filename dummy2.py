@@ -10,7 +10,7 @@ class Summarizer:
             # text-ada-001 -> cheaper but faster
             # text-davinci-003 -> Better quality more expensive
             engine = "text-davinci-003",
-            prompt = 'Summarize this text in 5 bullets {}'.format(text),
+            prompt = 'Summarize this text in 3 bullets {}'.format(text),
             temperature = 0.6,
             max_tokens = 150,
             )
@@ -24,5 +24,5 @@ class Summarizer:
                 
     
 
-obj=Summarizer()
+obj = Summarizer()
 Summarizer.main1()

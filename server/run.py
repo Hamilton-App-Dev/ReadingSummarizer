@@ -10,5 +10,9 @@ def hello():
   parse()
   return "Hello World"
 
+@app.route("/test", methods = ['GET'])
+def summarize():
+  return "Success!"
+
 if __name__ == "__main__":
   app.run()
