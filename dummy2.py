@@ -1,7 +1,7 @@
 import openai
 class Summarizer:
     
-    
+    '''Returns a string with your summary attached'''
     @classmethod
     def askGPT(self,text):
         global response
