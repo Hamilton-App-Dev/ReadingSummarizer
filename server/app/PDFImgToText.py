@@ -48,6 +48,5 @@ def read_images(img_files: list):
     text = ""
     for img_file in img_files:
         processed_image = process_image_for_ocr(img_file)
-        print(processed_image)
         text += pytesseract.image_to_string(processed_image)
     return text
