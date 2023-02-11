@@ -13,7 +13,6 @@ def hello():
     "message": "Its Working!"}), mimetype="application/json")
 
 
-
 '''
 API endpint for local development
 http://127.0.0.1:5000/summarize
@@ -27,6 +26,25 @@ def summarizeRoute():
   summary = summarize.summarizeReading(readingText)
 
   return summary
+
+@app.route("/get_bullets", methods = ['GET'])
+def BulletCountRoute():
+  readingText = request.args.get('readingText')
+  bullet_count = summarize.get_bullet_estimate(readingText)
+  json_response = Response(json.dumps({
+    "status": True,
+    "code": 200,
+    "bullets": bullet_count
+  }), mimetype="application/json")
+  
+  return json_response
+
+@app.route("/file", methods = ['POST'])
+def fileInputRoute():
+  requested_file = request.args.get('file')
+  return requested_file
+  
+
 
 if __name__ == "__main__":
   app.run(debug=True)

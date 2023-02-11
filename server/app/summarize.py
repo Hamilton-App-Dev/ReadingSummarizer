@@ -22,22 +22,23 @@ class Summarizer:
             )
         return response.choices[0].text
 
-    @classmethod
-    def get_bullet_estimate(self, text):
-        '''
-        Desc: Estimate the # of bullets needed to summarize the entire text
-        Params: 
-            text:str
-        Returns:
-            bullet_count:int
-        '''
-        word_count = len(text.split(' '))
-        bullet_count = word_count // 150
-        print(bullet_count)
-        return bullet_count
     
     def main1(self):
         pass
+
+
+def get_bullet_estimate(self, text):
+    '''
+    Desc: Estimate the # of bullets needed to summarize the entire text
+    Params: 
+        text:str
+    Returns:
+        bullet_count:int
+    '''
+    word_count = len(text.split(' '))
+    bullet_count = word_count // 150
+    return bullet_count
+
 
 # Will return a stirng summary of text arguemnt
 def summarizeReading(text):
