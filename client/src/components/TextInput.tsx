@@ -18,7 +18,13 @@ const TextInput = () => {
 				}}
 				onKeyDown={(e) => {
 					if (e.key == "Enter") {
-						console.log("Pressed Enter");
+						fetch("http://127.0.0.1:5000/summarize", {
+							method: "POST",
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify({ readingText: value }),
+						}).then(() => {
+							console.log("request sent to server");
+						});
 					}
 				}}
 			/>
