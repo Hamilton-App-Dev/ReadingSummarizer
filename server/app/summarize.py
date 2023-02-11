@@ -1,5 +1,6 @@
 import openai
 import os
+import math
 
 class Summarizer:
     
@@ -27,7 +28,7 @@ class Summarizer:
         pass
 
 
-def get_bullet_estimate(self, text):
+def get_bullet_estimate(text):
     '''
     Desc: Estimate the # of bullets needed to summarize the entire text
     Params: 
@@ -36,7 +37,7 @@ def get_bullet_estimate(self, text):
         bullet_count:int
     '''
     word_count = len(text.split(' '))
-    bullet_count = word_count // 150
+    bullet_count = math.ceil(word_count / 150)
     return bullet_count
 
 

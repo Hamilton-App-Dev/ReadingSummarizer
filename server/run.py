@@ -30,7 +30,7 @@ def summarizeRoute():
 @app.route("/get_bullets", methods = ['GET'])
 def BulletCountRoute():
   readingText = request.args.get('readingText')
-  bullet_count = summarize.get_bullet_estimate(readingText)
+  bullet_count = summarize.get_bullet_estimate("loremm ipsum")
   json_response = Response(json.dumps({
     "status": True,
     "code": 200,
