@@ -39,4 +39,15 @@
 
 .read-the-docs {
 	color: #888;
+
+}
+
+textarea {
+	height: inherit;
+	width: 100vw;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	font-family: "Lucida Console", "Courier New", monospace;
+	font-size: large;
 }

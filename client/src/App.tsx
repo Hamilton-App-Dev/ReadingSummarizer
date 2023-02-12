@@ -1,19 +1,21 @@
-import { useState } from "react";
-import LoginButton from "./components/LoginButton";
-import LogoutButton from "./components/LogoutButton";
-import { useAuth0 } from "@auth0/auth0-react";
-import { SideBar } from "./components/SideBar";
+
 import "./App.css";
+import LoginPage from "./components/LoginPage";
+import ProductPage from "./components/ProductPage";
+import { useAuth0 } from "@auth0/auth0-react";
+import TextInput from "./components/TextInput";
 
 function App() {
-	const [count, setCount] = useState(0);
-	const { user, isAuthenticated, isLoading } = useAuth0();
+    const { isAuthenticated, isLoading } = useAuth0();
 
-	return (
-		<div className="app">
-			<SideBar />
-		</div>
-	);
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
+    return (
+        <div className="app">
+            {isAuthenticated ? <ProductPage /> : <LoginPage />}
+        </div>
+    );
 }
 
 export default App;
