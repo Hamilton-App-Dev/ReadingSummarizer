@@ -2,6 +2,7 @@ import "./App.css";
 import LoginPage from "./components/LoginPage";
 import ProductPage from "./components/ProductPage";
 import { useAuth0 } from "@auth0/auth0-react";
+import TextInput from "./components/TextInput";
 
 function App() {
     const { isAuthenticated, isLoading } = useAuth0();
