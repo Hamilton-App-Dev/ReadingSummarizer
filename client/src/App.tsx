@@ -1,19 +1,17 @@
-import { useState } from "react";
 import "./App.css";
-import LoginButton from "./components/LoginButton";
-import LogoutButton from "./components/LogoutButton";
+import LoginPage from "./components/LoginPage";
+import ProductPage from "./components/ProductPage";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
-    const [count, setCount] = useState(0);
-    const { user, isAuthenticated, isLoading } = useAuth0();
+    const { isAuthenticated, isLoading } = useAuth0();
 
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
     return (
         <div className="app">
-            <nav>
-                <LoginButton />
-                <LogoutButton />
-            </nav>
+            {isAuthenticated ? <ProductPage /> : <LoginPage />}
         </div>
     );
 }

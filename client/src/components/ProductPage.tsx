@@ -1,4 +1,4 @@
-import LogoutButton from "./LogoutButton";
+import LogoutButton from "./ProductPage/LogoutButton";
 
 const ProductPage = () => {
     return (
