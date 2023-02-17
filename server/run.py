@@ -1,7 +1,8 @@
 # Need to downgrade to flask-2.1.3
-from flask import Flask, request, Response
+from flask import Flask, request, Response, send_from_directory
 import json
 import app.summarize as summarize
+import os
 
 app = Flask(__name__)
 
@@ -39,10 +40,23 @@ def BulletCountRoute():
   
   return json_response
 
-@app.route("/file", methods = ['POST'])
-def fileInputRoute():
-  requested_file = request.args.get('file')
-  return requested_file
+'''
+API to upload a pdf
+'''
+app.config['UPLOAD_FOLDER']='logs'
+@app.route('/upload_pdf/<path:filename>', methods=['GET', 'POST'])
+def download(filename):
+    print(app.root_path)
+    uploads = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
+    print(os.listdir())
+    print(uploads)
+    return send_from_directory(path=uploads, filename=filename)
+
+
+# @app.route("/file", methods = ['POST'])
+# def fileInputRoute():
+#   requested_file = request.args.get('file')
+#   return requested_file
   
 
 
