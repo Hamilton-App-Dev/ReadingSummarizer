@@ -43,14 +43,24 @@ def BulletCountRoute():
 '''
 API to upload a pdf
 '''
-app.config['UPLOAD_FOLDER']='logs'
+app.config['UPLOAD_FOLDER']= app.root_path
 @app.route('/upload_pdf/<path:filename>', methods=['GET', 'POST'])
 def download(filename):
-    print(app.root_path)
+    print(filename)
     uploads = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
     print(os.listdir())
     print(uploads)
-    return send_from_directory(path=uploads, filename=filename)
+    return send_from_directory(directory=uploads, path=filename)
+
+
+# # Write an api to retrieve a request to download a pdf
+
+
+
+
+
+
+
 
 
 # @app.route("/file", methods = ['POST'])

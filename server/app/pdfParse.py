@@ -44,13 +44,11 @@ def pdfParse(file_path : str):
                      if chr(65533) in text:  # invalid characters encountered!
                         # invoke OCR
                         ocr_count += 1
-                        print("before: '%s'" % text)
                         text1 = text.lstrip()
                         sb = " " * (len(text) - len(text1))  # leading spaces
                         text1 = text.rstrip()
                         sa = " " * (len(text) - len(text1))  # trailing spaces
                         new_text = sb + _get_tessocr(page, s["bbox"]) + sa
-                        print(" after: '%s'" % new_text)
                      all_text += text + chr(32)
    return all_text 
 
