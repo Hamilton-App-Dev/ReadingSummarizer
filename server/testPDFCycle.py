@@ -8,7 +8,7 @@ Need to type in terminal:
 export OPENAI_API_KEY='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'
 '''
 
-pdfName = 'archReading.pdf' # Change to the name of the pdf you want to test
+pdfName = 'organicArch.pdf' # Change to the name of the pdf you want to test
 dirName = pdfName[:-4]
 
 # Turn pdf into images
