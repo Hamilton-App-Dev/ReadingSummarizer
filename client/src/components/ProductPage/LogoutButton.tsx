@@ -4,13 +4,13 @@ const LogoutButton = () => {
     const { logout } = useAuth0();
 
     return (
-        <button
+        <img
+            src="/power.png"
+            className="h-6 w-6 cursor-pointer"
             onClick={() =>
                 logout({ logoutParams: { returnTo: window.location.origin } })
             }
-        >
-            Log Out
-        </button>
+        />
     );
 };
 

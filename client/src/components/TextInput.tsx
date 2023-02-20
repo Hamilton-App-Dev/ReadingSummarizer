@@ -11,9 +11,9 @@ const TextInput = (): ReactElement => {
         handleChange("");
     }, []);
     return (
-        <div className="text-black relative">
+        <div className="text-black w-full h-full flex items-center relative">
             <textarea
-                className="w-full max-h-64 h-10 absolute bottom-0 left-0 resize-none"
+                className="w-full h-10 max-h-64 absolute bottom-0 left-0 resize-none"
                 value={readingText}
                 onChange={(e) => {
                     handleChange(e.target.value);
