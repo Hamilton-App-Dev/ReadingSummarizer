@@ -13,7 +13,7 @@ const FileDrop = () => {
 
     return (
         <div
-            className="flex flex-col items-center justify-center text-center border-2 border-dashed rounded-2xl border-slate-600 p-6"
+            className="flex cursor-pointer flex-col w-full items-center justify-center text-center border-2 border-dashed rounded-2xl border-slate-600 p-6"
             {...getRootProps()}
         >
             <input {...getInputProps()} />

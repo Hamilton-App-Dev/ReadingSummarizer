@@ -11,7 +11,7 @@ const App: FC = (): ReactElement => {
         return <p>Loading...</p>;
     }
     return (
-        <div className="app">
+        <div className="app h-full">
             {isAuthenticated ? <ProductPage /> : <LoginPage />}
         </div>
     );
