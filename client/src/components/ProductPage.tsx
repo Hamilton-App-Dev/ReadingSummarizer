@@ -2,16 +2,17 @@ import { InputProvider } from "../utils/InputContext";
 import { InputBar } from "./InputBar";
 import { LogoutButton } from "./ProductPage/LogoutButton";
 import { Tutorial } from "./Tutorial";
+import SideBar from "./TWSideBar";
 
 const ProductPage = () => {
     return (
         <InputProvider>
-            <div className="flex flex-col h-full w-full">
-                <Tutorial />
-                <InputBar />
-            </div>
-            <div className="absolute bottom-3 right-3">
-                <LogoutButton />
+            <div className="flex h-full">
+                <SideBar />
+                <div className="h-screen flex-1 w-full">
+                    <Tutorial />
+                    <InputBar />
+                </div>
             </div>
         </InputProvider>
     );

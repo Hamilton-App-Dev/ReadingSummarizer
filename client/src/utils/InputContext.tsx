@@ -1,12 +1,14 @@
 import { createContext, useContext, useState } from "react";
-
+import { FileWithPath } from "react-dropzone";
 interface contextValues {
+    fileData: FileWithPath | undefined;
     readingText: string;
     result: string;
     loading: boolean;
     handleLoading: (loadState: boolean) => void;
     handleChange: (text: string) => void;
     handleResult: (text: string) => void;
+    handleFileChange: (file: FileWithPath) => void;
 }
 
 interface providerProps {
@@ -16,20 +18,26 @@ interface providerProps {
 const InputContext = createContext<contextValues | undefined>(undefined);
 
 function InputProvider({ children }: providerProps) {
-    const [readingText, setReadingText] = useState("");
-    const [result, setResult] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [readingText, setReadingText] = useState<string>("");
+    const [fileData, setFileData] = useState<FileWithPath | undefined>();
+    const [result, setResult] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(false);
+
     const handleLoading = (loadState: boolean): void => setLoading(loadState);
     const handleChange = (text: string): void => setReadingText(text);
+    const handleFileChange = (file: FileWithPath | undefined): void =>
+        setFileData(file);
     const handleResult = (text: string): void => setResult(text);
 
     const value = {
+        fileData,
         readingText,
         result,
         loading,
         handleLoading,
         handleChange,
         handleResult,
+        handleFileChange,
     };
 
     return (

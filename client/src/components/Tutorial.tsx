@@ -1,6 +1,6 @@
 const Tutorial = () => {
     return (
-        <div className="h-5/6 w-full flex items-center justify-center bg-indigo-300"></div>
+        <div className="h-4/5 w-full flex items-center justify-center bg-indigo-300"></div>
     );
 };
 
