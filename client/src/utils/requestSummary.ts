@@ -8,8 +8,10 @@ async function requestSummaryFile(file?: FileWithPath): Promise<string> {
     if (!file) return "No File";
     formData.append("file", file);
 
+    let response: any;
+
     try {
-        const response = await fetch(url, {
+        response = await fetch(url, {
             method: "POST",
             // headers: { "Content-Type": "application/json" },
             // body: JSON.stringify({ readingText: readingText }),
@@ -18,39 +20,43 @@ async function requestSummaryFile(file?: FileWithPath): Promise<string> {
         if (!response.ok) throw new Error(response.statusText);
         console.log("showed response: ");
         console.log(response);
-        summary = await response.json();
+        response = await response.json();
     } catch (err) {
         console.error(err);
     }
-    console.log(summary);
+    summary = response.summary;
     return summary;
 }
 
-interface ParamsType {
-    readingText: string;
+interface summaryResponse {
+    code: number;
+    status: boolean;
+    summary: string;
 }
 
 async function requestSummaryText(readingText?: string): Promise<string> {
     // const url: string = import.meta.env.VITE_URL_ENDPOINT + "/uploadPDF";
+    const params = new URLSearchParams("readingText=" + readingText);
     const url: string =
-        'http://170.187.167.124/summarizeText?readingText="' +
-        readingText +
-        '"';
+        "http://170.187.167.124/summarizeText?" + params.toString();
+
     let summary: string = "";
+    let response: any;
 
     try {
-        const response = await fetch(url, {
+        response = await fetch(url, {
             method: "GET",
             // headers: { "Content-Type": "application/json" },
         });
+
         if (!response.ok) throw new Error(response.statusText);
         console.log("showed response: ");
         console.log(response);
-        summary = await response.json();
+        response = await response.json();
     } catch (err) {
         console.error(err);
     }
-    console.log(summary);
+    summary = response.summary;
     return summary;
 }
 

@@ -5,11 +5,18 @@ import { requestSummaryFile } from "../utils/requestSummary";
 import { useCallback, useState } from "react";
 
 const FileDrop = () => {
-    const { loading, fileData, handleLoading, handleFileChange } = useInput();
+    const {
+        loading,
+        tutorial,
+        fileData,
+        handleLoading,
+        handleFileChange,
+        handleResult,
+        handleTutorial,
+    } = useInput();
     const [doneUploading, setDoneUploading] = useState<boolean>(false);
     const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
         acceptedFiles.forEach((file: FileWithPath) => {
-            console.log(file);
             handleLoading(true);
             handleFileChange(file);
             handleLoading(false);
@@ -41,7 +48,7 @@ const FileDrop = () => {
     return (
         <div className="w-full h-full">
             <div
-                className="flex flex-col h-full w-full items-center justify-center text-center border-2 border-dashed rounded-2xl border-slate-600 p-6"
+                className="flex flex-col h-[calc(100%-20px)] w-full items-center justify-center mt-2 text-center border-2 border-dashed rounded-2xl border-slate-600 p-6"
                 {...getRootProps()}
             >
                 <input {...getInputProps()} />
@@ -52,10 +59,17 @@ const FileDrop = () => {
                     </p>
                 ) : (
                     <p className="text-2xl font-bold">
-                        {acceptedFiles.length ? (
+                        {doneUploading ? (
                             <button
-                                onClick={() => {
-                                    requestSummaryFile(fileData);
+                                onClick={async () => {
+                                    handleLoading(true);
+                                    const summary = await requestSummaryFile(
+                                        fileData
+                                    );
+                                    if (tutorial) handleTutorial(false);
+                                    handleLoading(false);
+                                    setDoneUploading(false);
+                                    handleResult(summary);
                                     console.log(fileData);
                                 }}
                             >
