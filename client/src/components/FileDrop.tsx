@@ -24,6 +24,18 @@ const FileDrop = () => {
         });
     }, []);
 
+    function fileSizeValidator(file: FileWithPath) {
+        const maxSize = 100000000; // 100mb
+        if (file.size > maxSize) {
+            return {
+                code: "file-too-large",
+                message: `File size is larger than 100mb`,
+            };
+        }
+
+        return null;
+    }
+
     const {
         getRootProps,
         getInputProps,
@@ -37,6 +49,7 @@ const FileDrop = () => {
             "application/pdf": [".pdf"],
         },
         disabled: doneUploading,
+        validator: fileSizeValidator,
     });
 
     const files = acceptedFiles.map((file: FileWithPath) => (
@@ -82,7 +95,7 @@ const FileDrop = () => {
                 )}
                 {fileRejections.length ? (
                     <p className="block text-center text-xl pt-4 text-red-300">
-                        Only .pdf files accepted
+                        Use a different file!
                     </p>
                 ) : null}
             </div>

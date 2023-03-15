@@ -96,7 +96,7 @@ const Display = () => {
                     </h2>
                     <div className="flex flex-col gap-12">
                         {bulletPoints.map((bullet) => (
-                            <div className="py-4 rounded-lg flex flex-col items-center justify-center bg-white bg-opacity-5 border cursor-pointer border-white border-opacity-10">
+                            <div className="py-4 px-2 rounded-lg flex flex-col items-center justify-center bg-white bg-opacity-5 border cursor-pointer border-white border-opacity-10">
                                 {bullet}
                             </div>
                         ))}

@@ -34,18 +34,18 @@ interface summaryResponse {
     summary: string;
 }
 
-async function requestSummaryText(readingText?: string): Promise<string> {
+async function requestSummaryText(readingText: string): Promise<string> {
     // const url: string = import.meta.env.VITE_URL_ENDPOINT + "/uploadPDF";
-    const params = new URLSearchParams("readingText=" + readingText);
-    const url: string =
-        "https://hamiltonsummarizer.com/summarizeText?" + params.toString();
-
+    const url: string = "https://hamiltonsummarizer.com/summarizeText";
     let summary: string = "";
+    const formData = new FormData();
+    formData.append("readingText", readingText);
     let response: any;
 
     try {
         response = await fetch(url, {
-            method: "GET",
+            method: "POST",
+            body: formData,
             // headers: { "Content-Type": "application/json" },
         });
 
