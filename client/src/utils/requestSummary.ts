@@ -2,7 +2,7 @@ import { FileWithPath } from "react-dropzone";
 
 async function requestSummaryFile(file?: FileWithPath): Promise<string> {
     // const url: string = import.meta.env.VITE_URL_ENDPOINT + "/uploadPDF";
-    const url: string = "http://170.187.167.124/uploadPDF";
+    const url: string = "https://hamiltonsummarizer.com/uploadPDF";
     let summary: string = "";
     const formData = new FormData();
     if (!file) return "No File";
@@ -38,7 +38,7 @@ async function requestSummaryText(readingText?: string): Promise<string> {
     // const url: string = import.meta.env.VITE_URL_ENDPOINT + "/uploadPDF";
     const params = new URLSearchParams("readingText=" + readingText);
     const url: string =
-        "http://170.187.167.124/summarizeText?" + params.toString();
+        "https://hamiltonsummarizer.com/summarizeText?" + params.toString();
 
     let summary: string = "";
     let response: any;
