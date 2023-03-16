@@ -7,7 +7,7 @@ import { useInput } from "../utils/InputContext";
 import { requestSummaryText } from "../utils/requestSummary";
 import timeout from "../utils/testTimeout";
 
-const TextInput = (): ReactElement => {
+const TextInput = ({ allowed }: { allowed: boolean }): ReactElement => {
     const {
         fileData,
         readingText,
@@ -32,12 +32,14 @@ const TextInput = (): ReactElement => {
                     className="w-full h-10 max-h-64 absolute bottom-0 left-0 resize-none block  rounded-md border-gray-300 pr-10 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     value={readingText}
                     onChange={(e) => {
-                        handleChange(e.target.value);
-                        e.target.style.height = "2rem";
-                        e.target.style.height = `${e.target.scrollHeight}px`;
+                        if (allowed) {
+                            handleChange(e.target.value);
+                            e.target.style.height = "2rem";
+                            e.target.style.height = `${e.target.scrollHeight}px`;
+                        }
                     }}
                     onKeyDown={async (e) => {
-                        if (loading) {
+                        if (loading || !allowed) {
                             e.preventDefault();
                             return;
                         }
@@ -59,6 +61,7 @@ const TextInput = (): ReactElement => {
                 />
                 <button
                     onClick={async () => {
+                        if (!allowed) return;
                         console.log(readingText);
                         if (tutorial) handleTutorial(false);
 

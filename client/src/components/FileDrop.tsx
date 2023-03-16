@@ -4,7 +4,7 @@ import timeout from "../utils/testTimeout";
 import { requestSummaryFile } from "../utils/requestSummary";
 import { useCallback, useState } from "react";
 
-const FileDrop = () => {
+const FileDrop = ({ allowed }: { allowed: boolean }) => {
     const {
         loading,
         tutorial,
@@ -25,7 +25,7 @@ const FileDrop = () => {
     }, []);
 
     function fileSizeValidator(file: FileWithPath) {
-        const maxSize = 100000000; // 100mb
+        const maxSize = 20000000; // 20mb
         if (file.size > maxSize) {
             return {
                 code: "file-too-large",
@@ -48,7 +48,7 @@ const FileDrop = () => {
         accept: {
             "application/pdf": [".pdf"],
         },
-        disabled: doneUploading,
+        disabled: !allowed || doneUploading,
         validator: fileSizeValidator,
     });
 

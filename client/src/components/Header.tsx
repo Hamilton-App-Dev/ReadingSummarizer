@@ -1,11 +1,12 @@
 import { useInput } from "../utils/InputContext";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
 
 const Header = () => {
     const { handleTutorial } = useInput();
     const { logout } = useAuth0();
     return (
-        <div className="h-8 w-full flex justify-between items-center">
+        <div className="h-8 w-full z-50 flex justify-between items-center">
             <div className="cursor-pointer flex items-center font-extrabold mx-2">
                 <div className="w-4 h-4 mx-2 invert">
                     <svg
@@ -27,7 +28,7 @@ const Header = () => {
                     See Tutorial
                 </div>
                 <div
-                    className="mx-2 cursor-pointer"
+                    className="mx-2 cursor-pointer text-orange-500"
                     onClick={() =>
                         logout({
                             logoutParams: { returnTo: window.location.origin },

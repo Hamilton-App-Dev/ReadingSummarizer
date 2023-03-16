@@ -26,7 +26,7 @@ const TutorialCard = ({ icon, heading, description }: TutorialCardProps) => {
         </div>
     );
 };
-const Display = () => {
+const Display = ({ allowed }: { allowed: boolean }) => {
     const { result, loading, tutorial } = useInput();
     const tutorialContent = [
         {
@@ -76,9 +76,13 @@ const Display = () => {
         );
     }
     return (
-        <div className="flex-1 w-full max-h-[calc(100vh-32px-128px)] overflow-scroll bg-primary-300">
+        <div
+            className={`flex-1 ${
+                !allowed && "cursor-not-allowed select-none opacity-40 blur-sm"
+            } w-full max-h-[calc(100vh-32px-128px)] overflow-scroll bg-primary-300`}
+        >
             {tutorial ? (
-                <div className="flex flex-wrap gap-2 w-[calc(100%)] py-12 justify-center">
+                <div className="flex flex-wrap gap-2 w-[calc(100%)] py-12 justify-center ">
                     {tutorialContent.map((cardData, index) => (
                         <TutorialCard
                             icon={cardData.icon}

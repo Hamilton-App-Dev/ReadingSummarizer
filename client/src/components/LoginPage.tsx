@@ -19,7 +19,7 @@ const LoginPage = () => {
                 className="underline cursor-pointer"
                 onClick={() => loginWithRedirect()}
             >
-                Log In
+                Enter
             </p>
         </div>
     );
