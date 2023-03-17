@@ -1,6 +1,6 @@
 <h1 align="center">📚 Summarizer</h1>
 
-<p align="center"> AppDev at Hamilton's first introductory project.
+<p align="center"> AppDev at Hamilton's first introductory project. Work faster and summarize any article today!
     <br> 
 </p>
 
