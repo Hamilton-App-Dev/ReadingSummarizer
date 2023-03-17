@@ -4,7 +4,7 @@
     <br> 
 </p>
 
-## About <a name = "about"></a>
+## About: <a name = "about"></a>
 
 The Reading Summarizer is designed to provide you with a high-level overview of your class readings, making it easier than ever to supplement your coursework and improve your comprehension of complex material. Say goodbye to countless hours of reading and hello to more efficient studying! 📘
 
@@ -16,7 +16,7 @@ Be the first to try it out at https://reading-summarizer.vercel.app/ and let us 
 
 [https://reading-summarizer.vercel.app/](https://reading-summarizer.vercel.app/)
 
-## Built Using <a name = "built_using"></a>
+## Built Using: <a name = "built_using"></a>
 
 - [React](https://reactjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
